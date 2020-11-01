@@ -4,9 +4,9 @@
   "key": "BROWSERSTACK_ACCESS_KEY",
 
   "capabilities": {
-    "build": "BROWSERSTACK_BUILD",
+    "build": "BROWSERSTACK_BUILD_NAME",
     "name": "local_test",
-    "project": "Internal Network",
+    "project": "BROWSERSTACK_PROJECT",
     "browserstack.debug": true,
     "browserstack.local": true
   },

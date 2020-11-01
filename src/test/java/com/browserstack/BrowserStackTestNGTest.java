@@ -33,6 +33,8 @@ public class BrowserStackTestNGTest {
     protected String sessionID;
     private String username;
     private String accessKey;
+    private String build;
+    private String project;
 
     @BeforeMethod(alwaysRun = true)
     @org.testng.annotations.Parameters(value = { "config", "environment" })
@@ -70,6 +72,14 @@ public class BrowserStackTestNGTest {
             accessKey = (String) config.get("key");
         }
 
+        build = System.getenv("BROWSERSTACK_BUILD_NAME");
+        project = System.getenv("BROWSERSTACK_PROJECT");
+        if (build!=null) {
+            capabilities.setCapability("build", build);
+        }
+        if (project!=null) {
+            capabilities.setCapability("project", project);
+        }
         if (capabilities.getCapability("browserstack.local") != null
                 && capabilities.getCapability("browserstack.local") == "true") {
             Map<String, String> options = new HashMap<String, String>();

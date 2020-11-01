@@ -21,7 +21,7 @@ jobs:
       with:
         java-version: 1.8
     - name: Build with Maven
-      run: mvn test -P parallel
+      run: $BROWSERSTACK_BUILD_NAME $BROWSERSTACK_PROJECT mvn test -P parallel
       env:
         BROWSERSTACK_BUILD_NAME: ${GITHUB_WORKFLOW}
         BROWSERSTACK_PROJECT: ${GITHUB_RUN_ID}

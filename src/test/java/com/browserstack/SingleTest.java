@@ -25,6 +25,5 @@ public class SingleTest extends BrowserStackTestNGTest {
             throw e;
         }
         markTest("passed"," Title Matched");
-//        wait.until;
     }
 }

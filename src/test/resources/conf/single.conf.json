@@ -4,9 +4,9 @@
   "key": "BROWSERSTACK_ACCESS_KEY",
 
   "capabilities": {
-    "build": "BROWSERSTACK_BUILD",
+    "build": "BROWSERSTACK_BUILD_NAME",
     "name": "single_test",
-    "project": "wolters kluwer",
+    "project": "BROWSERSTACK_PROJECT",
     "browserstack.debug": true
   },
 

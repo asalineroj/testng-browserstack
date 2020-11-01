@@ -4,9 +4,9 @@
   "key": "BROWSERSTACK_ACCESS_KEY",
 
   "capabilities": {
-    "build": "BROWSERSTACK_BUILD",
+    "build": "BROWSERSTACK_BUILD_NAME",
     "name": "parallel_test",
-    "project": "testng-browserstack",
+    "project": "BROWSERSTACK_PROJECT",
     "seleniumVersion" : "3.14.0",
     "browserVersion" : "latest",
     "browserstack.debug": true

@@ -25,6 +25,8 @@
       "browser": "safari"
     },
     "ie": {
+      "os" : "Windows",
+      "osVersion" : "10",
       "browser": "internet explorer"
     },
     "iPhone_11": {

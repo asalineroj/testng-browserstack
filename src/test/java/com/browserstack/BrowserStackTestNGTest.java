@@ -26,6 +26,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import io.percy.selenium.Percy;
+
 
 public class BrowserStackTestNGTest {
     public WebDriver driver;
@@ -35,6 +37,7 @@ public class BrowserStackTestNGTest {
     private String accessKey;
     private String build;
     private String project;
+    protected Percy percy;
 
     @BeforeMethod(alwaysRun = true)
     @org.testng.annotations.Parameters(value = { "config", "environment" })
@@ -91,6 +94,7 @@ public class BrowserStackTestNGTest {
         System.out.print(capabilities);
         driver = new RemoteWebDriver(
                 new URL("http://" + username + ":" + accessKey + "@" + config.get("server") + "/wd/hub"), capabilities);
+        percy = new Percy(driver);
         sessionID = ((RemoteWebDriver) driver).getSessionId().toString();
     }
 

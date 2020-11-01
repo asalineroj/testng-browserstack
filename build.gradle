@@ -10,6 +10,7 @@ dependencies {
     compile 'org.seleniumhq.selenium:selenium-java:3.12.0'
     compile 'com.browserstack:browserstack-local-java:0.1.0'
     compile 'com.googlecode.json-simple:json-simple:1.1.1'
+    compile group: 'io.percy', name: 'percy-java-selenium', version: '0.1.4'
 }
 
 group = 'com.browserstack'

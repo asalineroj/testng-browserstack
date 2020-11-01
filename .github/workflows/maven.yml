@@ -23,7 +23,7 @@ jobs:
     - name: Build with Maven
       run: mvn test -P parallel
       env:
-        BROWSERSTACK_BUILD_NAME: ${GITHUB_WORKFLOW}
-        BROWSERSTACK_PROJECT: ${GITHUB_RUN_ID}
+        BROWSERSTACK_BUILD_NAME: ${{env.GITHUB_WORKFLOW}}
+        BROWSERSTACK_PROJECT: ${{env.GITHUB_RUN_ID}}
         BROWSERSTACK_USERNAME: ${{secrets.BROWSERSTACK_USERNAME}}
         BROWSERSTACK_ACCESS_KEY: ${{secrets.BROWSERSTACK_ACCESS_KEY}}

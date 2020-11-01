@@ -88,7 +88,7 @@ public class BrowserStackTestNGTest {
 //            l = new Local();
 //            l.start(options);
         }
-
+        System.out.print(capabilities);
         driver = new RemoteWebDriver(
                 new URL("http://" + username + ":" + accessKey + "@" + config.get("server") + "/wd/hub"), capabilities);
         sessionID = ((RemoteWebDriver) driver).getSessionId().toString();

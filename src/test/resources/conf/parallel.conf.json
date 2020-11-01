@@ -7,6 +7,8 @@
     "build": "BROWSERSTACK_BUILD",
     "name": "parallel_test",
     "project": "testng-browserstack",
+    "seleniumVersion" : "3.14.0",
+    "browserVersion" : "latest",
     "browserstack.debug": true
   },
 
@@ -19,6 +21,7 @@
     },
     "safari": {
       "os": "OS X",
+      "osVersion" : "Catalina",
       "browser": "safari"
     },
     "ie": {

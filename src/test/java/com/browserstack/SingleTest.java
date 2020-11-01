@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import static org.junit.Assert.assertEquals;
+
 public class SingleTest extends BrowserStackTestNGTest {
 
     @Test
@@ -16,6 +18,12 @@ public class SingleTest extends BrowserStackTestNGTest {
         element.submit();
         Thread.sleep(5000);
 
-        Assert.assertEquals("BrowserStack - Google Search", driver.getTitle());
+        try{
+            assertEquals("BrowserStack - Google Search", driver.getTitle());
+        } catch (AssertionError e){
+            markTest("failed","Title Did not match");
+            throw e;
+        }
+        markTest("passed"," Title Matched");
     }
 }

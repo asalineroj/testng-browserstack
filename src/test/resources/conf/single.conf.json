@@ -6,6 +6,7 @@
   "capabilities": {
     "build": "testng-browserstack",
     "name": "single_test",
+    "project": "wolters kluwer",
     "browserstack.debug": true
   },
 

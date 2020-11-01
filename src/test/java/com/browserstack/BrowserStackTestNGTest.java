@@ -1,15 +1,26 @@
 package com.browserstack;
 
 import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
 import com.browserstack.local.Local;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPut;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.message.BasicNameValuePair;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -19,6 +30,9 @@ import org.testng.annotations.BeforeMethod;
 public class BrowserStackTestNGTest {
     public WebDriver driver;
     private Local l;
+    protected String sessionID;
+    private String username;
+    private String accessKey;
 
     @BeforeMethod(alwaysRun = true)
     @org.testng.annotations.Parameters(value = { "config", "environment" })
@@ -46,33 +60,53 @@ public class BrowserStackTestNGTest {
             }
         }
 
-        String username = System.getenv("BROWSERSTACK_USERNAME");
+        username = System.getenv("BROWSERSTACK_USERNAME");
         if (username == null) {
             username = (String) config.get("user");
         }
 
-        String accessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
+        accessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
         if (accessKey == null) {
             accessKey = (String) config.get("key");
         }
 
         if (capabilities.getCapability("browserstack.local") != null
                 && capabilities.getCapability("browserstack.local") == "true") {
-            l = new Local();
             Map<String, String> options = new HashMap<String, String>();
             options.put("key", accessKey);
-            l.start(options);
+//            Local connection established via CLI
+//            l = new Local();
+//            l.start(options);
         }
 
         driver = new RemoteWebDriver(
                 new URL("http://" + username + ":" + accessKey + "@" + config.get("server") + "/wd/hub"), capabilities);
+        sessionID = ((RemoteWebDriver) driver).getSessionId().toString();
     }
 
     @AfterMethod(alwaysRun = true)
     public void tearDown() throws Exception {
+
         driver.quit();
         if (l != null) {
             l.stop();
         }
+    }
+
+    protected void markTest(String passed, String reason) throws IOException, URISyntaxException {
+//        URI uri = new URI("https://"+username+":"+accessKey+"@api.browserstack.com/automate/sessions/"+sessionID+".json");
+//        HttpPut putRequest = new HttpPut(uri);
+//
+//        ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+//        nameValuePairs.add((new BasicNameValuePair("status", passed)));
+//        nameValuePairs.add((new BasicNameValuePair("reason", reason)));
+//        putRequest.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+//        HttpClientBuilder.create().build().execute(putRequest);
+
+
+        JavascriptExecutor jse = (JavascriptExecutor)driver;
+        String executeScript = "browserstack_executor: {\"action\": \"setSessionStatus\", \"arguments\": {\"status\": \"passed\", \"reason\": \""+reason+"\"}}";
+        System.out.println(executeScript);
+        jse.executeScript(executeScript);
     }
 }

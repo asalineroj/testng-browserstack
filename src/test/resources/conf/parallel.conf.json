@@ -4,8 +4,11 @@
   "key": "BROWSERSTACK_ACCESS_KEY",
 
   "capabilities": {
-    "build": "testng-browserstack",
+    "build": "BROWSERSTACK_BUILD",
     "name": "parallel_test",
+    "project": "testng-browserstack",
+    "seleniumVersion" : "3.14.0",
+    "browserVersion" : "latest",
     "browserstack.debug": true
   },
 
@@ -18,10 +21,23 @@
     },
     "safari": {
       "os": "OS X",
+      "osVersion" : "Catalina",
       "browser": "safari"
     },
     "ie": {
+      "os" : "Windows",
+      "osVersion" : "10",
       "browser": "internet explorer"
+    },
+    "iPhone_11": {
+      "osVersion": "11",
+      "deviceName": "iPhone 8 Plus",
+      "realMobile": "true"
+    },
+    "samsung8": {
+      "osVersion": "7.0",
+      "deviceName": "Samsung Galaxy S8",
+      "realMobile": "true"
     }
   }
 }

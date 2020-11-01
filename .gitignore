@@ -1,4 +1,5 @@
 *.png
+gradle*
 target/
 local.log
 .idea

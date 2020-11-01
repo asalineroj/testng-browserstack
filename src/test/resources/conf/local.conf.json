@@ -4,15 +4,18 @@
   "key": "BROWSERSTACK_ACCESS_KEY",
 
   "capabilities": {
-    "build": "testng-browserstack",
+    "build": "BROWSERSTACK_BUILD",
     "name": "local_test",
+    "project": "Internal Network",
     "browserstack.debug": true,
     "browserstack.local": true
   },
 
   "environments": {
     "chrome": {
-      "browser": "chrome"
+      "osVersion": "7.0",
+      "deviceName": "Samsung Galaxy S8",
+      "realMobile": "true"
     }
   }
 }

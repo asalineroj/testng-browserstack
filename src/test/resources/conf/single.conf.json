@@ -4,7 +4,7 @@
   "key": "BROWSERSTACK_ACCESS_KEY",
 
   "capabilities": {
-    "build": "testng-browserstack",
+    "build": "BROWSERSTACK_BUILD",
     "name": "single_test",
     "project": "wolters kluwer",
     "browserstack.debug": true

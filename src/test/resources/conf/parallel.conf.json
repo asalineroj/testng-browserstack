@@ -4,7 +4,7 @@
   "key": "BROWSERSTACK_ACCESS_KEY",
 
   "capabilities": {
-    "build": "Wolters Kluwer",
+    "build": "BROWSERSTACK_BUILD",
     "name": "parallel_test",
     "project": "testng-browserstack",
     "browserstack.debug": true

@@ -4,7 +4,7 @@
   "key": "BROWSERSTACK_ACCESS_KEY",
 
   "capabilities": {
-    "build": "testng-browserstack",
+    "build": "BROWSERSTACK_BUILD",
     "name": "suite_test",
     "browserstack.debug": true
   },

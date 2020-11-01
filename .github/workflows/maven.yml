@@ -21,7 +21,7 @@ jobs:
       with:
         java-version: 1.8
     - name: Build with Maven
-      run: $BROWSERSTACK_BUILD_NAME $BROWSERSTACK_PROJECT mvn test -P parallel
+      run: mvn test -P parallel
       env:
         BROWSERSTACK_BUILD_NAME: action
         BROWSERSTACK_PROJECT: barclays

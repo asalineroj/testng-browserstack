@@ -27,9 +27,9 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        ./demosite/pip install -r requirements.txt
+        ${{ github.workspace }}/demosite/pip install -r requirements.txt
     - name: Run migrations
-      run: ./demosite/demosite/python manage.py migrate
+      run: ${{ github.workspace }}/demosite/demosite/python manage.py migrate
     - name: Build with Maven
       env:
         BROWSERSTACK_BUILD_NAME: ${GITHUB_WORKFLOW}

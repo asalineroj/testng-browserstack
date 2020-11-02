@@ -38,15 +38,21 @@ jobs:
       run: yarn
     - name: Percy Test
       uses: percy/exec-action@v0.1.1
+      with: 
+        command: "BROWSERSTACK_BUILD_NAME=${{ env.BROWSERSTACK_BUILD_NAME }} BROWSERSTACK_PROJECT=${{ env.BROWSERSTACK_PROJECT }} mvn test -P single"
+        env:
+          BROWSERSTACK_BUILD_NAME: ${GITHUB_WORKFLOW}
+          BROWSERSTACK_PROJECT: ${GITHUB_RUN_ID}
+          BROWSERSTACK_USERNAME: ${{secrets.BROWSERSTACK_USERNAME}}
+          BROWSERSTACK_ACCESS_KEY: ${{secrets.BROWSERSTACK_ACCESS_KEY}}
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+    - name: Build with Maven
       env:
         BROWSERSTACK_BUILD_NAME: ${GITHUB_WORKFLOW}
         BROWSERSTACK_PROJECT: ${GITHUB_RUN_ID}
         BROWSERSTACK_USERNAME: ${{secrets.BROWSERSTACK_USERNAME}}
         BROWSERSTACK_ACCESS_KEY: ${{secrets.BROWSERSTACK_ACCESS_KEY}}
-        PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
-      with: 
-        command: |
-            echo ${{ env.BROWSERSTACK_BUILD_NAME }} 
-            echo ${{ env.BROWSERSTACK_PROJECT }}
-            BROWSERSTACK_BUILD_NAME=${{ env.BROWSERSTACK_BUILD_NAME }} BROWSERSTACK_PROJECT=${{ env.BROWSERSTACK_PROJECT }} mvn test -P single
-      
+      run: |
+        echo ${{ env.BROWSERSTACK_BUILD_NAME }} 
+        echo ${{ env.BROWSERSTACK_PROJECT }}
+        BROWSERSTACK_BUILD_NAME=${{ env.BROWSERSTACK_BUILD_NAME }} BROWSERSTACK_PROJECT=${{ env.BROWSERSTACK_PROJECT }} mvn test -P parallel

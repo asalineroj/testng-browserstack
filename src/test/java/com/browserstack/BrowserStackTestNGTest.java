@@ -26,6 +26,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import io.percy.selenium.Percy;
+
 
 public class BrowserStackTestNGTest {
     public WebDriver driver;
@@ -35,11 +37,15 @@ public class BrowserStackTestNGTest {
     private String accessKey;
     private String build;
     private String project;
+    protected String percyProfile;
+    protected Percy percy;
 
     @BeforeMethod(alwaysRun = true)
     @org.testng.annotations.Parameters(value = { "config", "environment" })
     @SuppressWarnings("unchecked")
     public void setUp(String config_file, String environment) throws Exception {
+        percyProfile = System.getenv("PERCY_ENABLE");
+        System.out.println("percy enabled?  "+percyProfile);
         JSONParser parser = new JSONParser();
         JSONObject config = (JSONObject) parser.parse(new FileReader("src/test/resources/conf/" + config_file));
         JSONObject envs = (JSONObject) config.get("environments");
@@ -91,6 +97,7 @@ public class BrowserStackTestNGTest {
         System.out.print(capabilities);
         driver = new RemoteWebDriver(
                 new URL("http://" + username + ":" + accessKey + "@" + config.get("server") + "/wd/hub"), capabilities);
+        percy = new Percy(driver);
         sessionID = ((RemoteWebDriver) driver).getSessionId().toString();
     }
 

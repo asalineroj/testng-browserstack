@@ -20,6 +20,37 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.7
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r ${{ github.workspace }}/demosite/requirements.txt
+    - name: Run migrations
+      run: python ${{ github.workspace }}/demosite/demosite/manage.py migrate
+    - name: Run Server
+      run: python ${{ github.workspace }}/demosite/demosite/manage.py runserver >/dev/null 2>&1 </dev/null & disown
+    - name: Run Browserstack Local
+      run: |
+        chmod +x BrowserStackLocal
+        ./BrowserStackLocal --key  ${{secrets.BROWSERSTACK_ACCESS_KEY}} --daemon start
+    - name: Checkout
+      uses: actions/checkout@master
+    - name: Install
+      run: yarn
+    - name: Percy Test
+      uses: percy/exec-action@v0.1.1
+      env:
+          BROWSERSTACK_BUILD_NAME: ${GITHUB_WORKFLOW}
+          BROWSERSTACK_PROJECT: ${GITHUB_RUN_ID}
+          BROWSERSTACK_USERNAME: ${{secrets.BROWSERSTACK_USERNAME}}
+          BROWSERSTACK_ACCESS_KEY: ${{secrets.BROWSERSTACK_ACCESS_KEY}}
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+          PERCY_ENABLE: 1
+      with:
+        command: "mvn test -P local"
     - name: Build with Maven
       env:
         BROWSERSTACK_BUILD_NAME: ${GITHUB_WORKFLOW}
@@ -29,5 +60,4 @@ jobs:
       run: |
         echo ${{ env.BROWSERSTACK_BUILD_NAME }} 
         echo ${{ env.BROWSERSTACK_PROJECT }}
-        BROWSERSTACK_BUILD_NAME=${{ env.BROWSERSTACK_BUILD_NAME }} BROWSERSTACK_PROJECT=${{ env.BROWSERSTACK_PROJECT }} mvn test -P parallel
-      
+        BROWSERSTACK_BUILD_NAME=${{ env.BROWSERSTACK_BUILD_NAME }} BROWSERSTACK_PROJECT=${{ env.BROWSERSTACK_PROJECT }} PERCY_ENABLE=0 mvn test -P parallel

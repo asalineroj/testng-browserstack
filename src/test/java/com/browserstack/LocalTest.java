@@ -12,8 +12,10 @@ public class LocalTest extends BrowserStackTestNGTest {
 //        driver.get("http://bs-local.com:45691/check");
 
         Assert.assertTrue(driver.getPageSource().contains("Up and running"));
-        markTest("passed","Up and Running");
-        driver.get("http://localhost:8000/accounts/login/");
 
+        driver.get("http://localhost:8000/accounts/login/");
+        percy.snapshot("Login");
+        Thread.sleep(2500);
+        markTest("passed","Up and Running");
     }
 }

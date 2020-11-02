@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
+import io.percy.selenium.Percy;
 import static org.junit.Assert.assertEquals;
 
 public class SingleTest extends BrowserStackTestNGTest {
@@ -17,6 +17,7 @@ public class SingleTest extends BrowserStackTestNGTest {
         element.sendKeys("BrowserStack");
         element.submit();
         Thread.sleep(5000);
+        percy.snapshot("Home Page");
 
         try{
             assertEquals("BrowserStack - Google Search", driver.getTitle());
@@ -25,6 +26,6 @@ public class SingleTest extends BrowserStackTestNGTest {
             throw e;
         }
         markTest("passed"," Title Matched");
-        System.out.print("Now To Percy");
+        System.out.print("Now To Percy...");
     }
 }

@@ -1,0 +1,9 @@
+form {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    text-align: center;
+}
+label {
+    font-size: large;
+}

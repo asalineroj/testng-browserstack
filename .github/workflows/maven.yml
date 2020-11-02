@@ -31,7 +31,7 @@ jobs:
     - name: Run migrations
       run: python ${{ github.workspace }}/demosite/demosite/manage.py migrate
     - name: Run Server
-      run: python ${{ github.workspace }}/demosite/demosite/manage.py runsever
+      run: python ${{ github.workspace }}/demosite/demosite/manage.py runserver
     - name: Run Browserstack Local
       run: |
         chmod +x BrowserStackLocal

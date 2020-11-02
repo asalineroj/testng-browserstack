@@ -29,6 +29,8 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r ${{ github.workspace }}/demosite/requirements.txt
     - name: Run migrations
+      run: python manage.py migrate
+    - name: Run Server
       run: python ${{ github.workspace }}/demosite/demosite/manage.py migrate
     - name: Build with Maven
       env:

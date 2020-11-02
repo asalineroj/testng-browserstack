@@ -20,7 +20,7 @@ public class SingleTest extends BrowserStackTestNGTest {
         percy.snapshot("Home Page");
 
         try{
-            assertEquals("BrowserStack - Google Search", driver.getTitle());
+            assertEquals("BrowserStack - Google Search".toLowerCase(), driver.getTitle().toLowerCase());
         } catch (AssertionError e){
             markTest("failed","Title Did not match");
             throw e;

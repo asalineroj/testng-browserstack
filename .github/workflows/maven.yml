@@ -31,11 +31,11 @@ jobs:
     - name: Run migrations
       run: python ${{ github.workspace }}/demosite/demosite/manage.py migrate
     - name: Run Server
-      run: python ${{ github.workspace }}/demosite/demosite/manage.py runserver
+      run: python ${{ github.workspace }}/demosite/demosite/manage.py runserver >/dev/null 2>&1 </dev/null & disown
     - name: Run Browserstack Local
       run: |
         chmod +x BrowserStackLocal
-        ./BrowserStackLocal --key  ${{secrets.BROWSERSTACK_ACCESS_KEY}} --local-identifier
+        ./BrowserStackLocal --key  ${{secrets.BROWSERSTACK_ACCESS_KEY}} --daemon start
     - name: Checkout
       uses: actions/checkout@master
     - name: Install

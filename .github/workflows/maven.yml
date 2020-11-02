@@ -45,7 +45,7 @@ jobs:
           BROWSERSTACK_ACCESS_KEY: ${{secrets.BROWSERSTACK_ACCESS_KEY}}
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
       with:
-        command: "BROWSERSTACK_BUILD_NAME=${{ env.BROWSERSTACK_BUILD_NAME }} BROWSERSTACK_PROJECT=${{ env.BROWSERSTACK_PROJECT }} mvn test -P single"
+        command: "mvn test -P single"
     - name: Build with Maven
       env:
         BROWSERSTACK_BUILD_NAME: ${GITHUB_WORKFLOW}

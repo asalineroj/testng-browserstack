@@ -43,8 +43,9 @@ jobs:
         BROWSERSTACK_PROJECT: ${GITHUB_RUN_ID}
         BROWSERSTACK_USERNAME: ${{secrets.BROWSERSTACK_USERNAME}}
         BROWSERSTACK_ACCESS_KEY: ${{secrets.BROWSERSTACK_ACCESS_KEY}}
-      with: |
-        echo ${{ env.BROWSERSTACK_BUILD_NAME }} 
-        echo ${{ env.BROWSERSTACK_PROJECT }}
-        BROWSERSTACK_BUILD_NAME=${{ env.BROWSERSTACK_BUILD_NAME }} BROWSERSTACK_PROJECT=${{ env.BROWSERSTACK_PROJECT }} mvn test -P single
+      with: 
+        command: |
+            echo ${{ env.BROWSERSTACK_BUILD_NAME }} 
+            echo ${{ env.BROWSERSTACK_PROJECT }}
+            BROWSERSTACK_BUILD_NAME=${{ env.BROWSERSTACK_BUILD_NAME }} BROWSERSTACK_PROJECT=${{ env.BROWSERSTACK_PROJECT }} mvn test -P single
       

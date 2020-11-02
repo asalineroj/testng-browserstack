@@ -37,12 +37,15 @@ public class BrowserStackTestNGTest {
     private String accessKey;
     private String build;
     private String project;
+    protected String percyProfile;
     protected Percy percy;
 
     @BeforeMethod(alwaysRun = true)
     @org.testng.annotations.Parameters(value = { "config", "environment" })
     @SuppressWarnings("unchecked")
     public void setUp(String config_file, String environment) throws Exception {
+        percyProfile = System.getenv("PERCY_ENABLE");
+        System.out.println("percy enabled?  "+percyProfile);
         JSONParser parser = new JSONParser();
         JSONObject config = (JSONObject) parser.parse(new FileReader("src/test/resources/conf/" + config_file));
         JSONObject envs = (JSONObject) config.get("environments");

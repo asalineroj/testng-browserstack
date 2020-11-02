@@ -17,7 +17,8 @@ public class SingleTest extends BrowserStackTestNGTest {
         element.sendKeys("BrowserStack");
         element.submit();
         Thread.sleep(5000);
-        percy.snapshot("Home Page" + sessionID);
+        percy.snapshot("Home Page");
+
         try{
             assertEquals("BrowserStack - Google Search", driver.getTitle());
         } catch (AssertionError e){

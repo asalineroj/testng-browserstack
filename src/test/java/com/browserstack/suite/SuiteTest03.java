@@ -16,6 +16,7 @@ public class SuiteTest03 extends BrowserStackTestNGTest {
         Thread.sleep(5000);
         WebElement element = driver.findElement(By.name("q"));
         element.sendKeys("BrowserStack Test 03");
+        nameTest("Apply for Product");
         Thread.sleep(5000);
         element.submit();
         Thread.sleep(5000);

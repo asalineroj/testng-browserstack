@@ -15,7 +15,14 @@ public class LocalTest extends BrowserStackTestNGTest {
 
         driver.get("http://localhost:8000/accounts/login/");
         percy.snapshot("Login");
-        Thread.sleep(2500);
+        nameTest("Login");
+        Thread.sleep(2000);
+        driver.get("http://localhost:8000/polls/1/");
+        percy.snapshot("Question 1");
+        Thread.sleep(2000);
+        driver.get("http://localhost:8000/polls/2/");
+        percy.snapshot("Question 2");
         markTest("passed","Up and Running");
+
     }
 }

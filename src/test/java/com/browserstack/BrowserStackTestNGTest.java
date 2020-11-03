@@ -110,6 +110,20 @@ public class BrowserStackTestNGTest {
         }
     }
 
+    protected void nameTest(String sessionName) throws IOException, URISyntaxException {
+//        URI uri = new URI("https://"+username+":"+accessKey+"@api.browserstack.com/automate/sessions/"+sessionID+".json");
+//        HttpPut putRequest = new HttpPut(uri);
+//
+//        ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+//        nameValuePairs.add((new BasicNameValuePair("status", passed)));
+//        nameValuePairs.add((new BasicNameValuePair("reason", reason)));
+//        putRequest.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+//        HttpClientBuilder.create().build().execute(putRequest);
+
+        JavascriptExecutor jse = (JavascriptExecutor)driver;
+        jse.executeScript("browserstack_executor: {\"action\": \"setSessionName\", \"arguments\": {\"name\":\""+sessionName+"\" }}");
+    }
+
     protected void markTest(String passed, String reason) throws IOException, URISyntaxException {
 //        URI uri = new URI("https://"+username+":"+accessKey+"@api.browserstack.com/automate/sessions/"+sessionID+".json");
 //        HttpPut putRequest = new HttpPut(uri);

@@ -19,7 +19,7 @@ public class SuiteTest09 extends BrowserStackTestNGTest {
         Thread.sleep(3000);
         element.submit();
         Thread.sleep(3000);
-
+        nameTest("Open Account");
         Assert.assertEquals("BrowserStack Test 09 - Google Search", driver.getTitle());
     }
 }

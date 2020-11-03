@@ -8,6 +8,7 @@ form {
 
 #vote {
     grid-column: 2;
+    font-color: red;
 }
 
 #login {

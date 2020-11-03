@@ -40,6 +40,13 @@ jobs:
       uses: actions/checkout@master
     - name: Install
       run: yarn
+    - name: 'BrowserStack Env Setup'
+      uses: 'browserstack/github-actions/setup-env@master'
+      with:
+          username:  ${{ secrets.BROWSERSTACK_USERNAME }}
+          access-key: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+          build-name: BUILD_INFO
+          project-name: REPO_NAME
     - name: Percy Test
       uses: percy/exec-action@v0.1.1
       env:

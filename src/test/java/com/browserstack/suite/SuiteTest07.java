@@ -16,8 +16,10 @@ public class SuiteTest07 extends BrowserStackTestNGTest {
         WebElement element = driver.findElement(By.name("q"));
         element.sendKeys("BrowserStack Test 07");
         element.submit();
-        Thread.sleep(3000);
         nameTest("Send Proof of ID");
+        markTest("passed","");
+        Thread.sleep(3000);
+
         Assert.assertEquals("BrowserStack Test 07 - Google Search", driver.getTitle());
     }
 }

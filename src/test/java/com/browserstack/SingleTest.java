@@ -25,7 +25,7 @@ public class SingleTest extends BrowserStackTestNGTest {
             markTest("failed","Title Did not match");
             throw e;
         }
-        markTest("passed"," Title Matched");
+        markTest("passed","");
         System.out.print("Now To Percy...");
     }
 }

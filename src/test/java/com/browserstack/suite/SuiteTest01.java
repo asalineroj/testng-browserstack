@@ -17,6 +17,7 @@ public class SuiteTest01 extends BrowserStackTestNGTest {
         element.sendKeys("BrowserStack Test 01");
         element.submit();
         nameTest("Login");
+        markTest("passed","");
         Thread.sleep(2500);
 
         Assert.assertEquals("BrowserStack Test 01 - Google Search", driver.getTitle());

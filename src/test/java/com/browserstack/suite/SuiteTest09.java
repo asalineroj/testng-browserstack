@@ -13,13 +13,14 @@ public class SuiteTest09 extends BrowserStackTestNGTest {
     @Test
     public void test_09() throws Exception {
         driver.get("https://bank.barclays.co.uk/olb/authlogin/loginAppContainer.do#/identification");
+        nameTest("Open Account");
         Thread.sleep(3000);
         WebElement element = driver.findElement(By.id("surname0"));
         element.sendKeys("Doe");
         Thread.sleep(3000);
 //        element.submit();
+        markTest("passed","");
         Thread.sleep(3000);
-        nameTest("Open Account");
         Assert.assertEquals("BrowserStack Test 09 - Google Search", driver.getTitle());
     }
 }

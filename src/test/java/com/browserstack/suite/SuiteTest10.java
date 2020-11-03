@@ -16,8 +16,9 @@ public class SuiteTest10 extends BrowserStackTestNGTest {
         WebElement element = driver.findElement(By.name("q"));
         element.sendKeys("BrowserStack Test 10");
         element.submit();
-        Thread.sleep(2500);
         nameTest("Access Account");
+        markTest("passed","");
+        Thread.sleep(2500);
         Assert.assertEquals("BrowserStack Test 10 - Google Search", driver.getTitle());
     }
 }

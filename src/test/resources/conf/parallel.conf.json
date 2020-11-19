@@ -27,7 +27,7 @@
     "ie": {
       "os" : "Windows",
       "osVersion" : "10",
-      "browser": "internet explorer"
+      "browser": "Edge"
     },
     "iPhone_11": {
       "osVersion": "11",

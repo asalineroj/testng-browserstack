@@ -116,18 +116,8 @@ public class BrowserStackTestNGTest {
     }
 
     protected void markTest(String passed, String reason) throws IOException, URISyntaxException {
-//        URI uri = new URI("https://"+username+":"+accessKey+"@api.browserstack.com/automate/sessions/"+sessionID+".json");
-//        HttpPut putRequest = new HttpPut(uri);
-//
-//        ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-//        nameValuePairs.add((new BasicNameValuePair("status", passed)));
-//        nameValuePairs.add((new BasicNameValuePair("reason", reason)));
-//        putRequest.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-//        HttpClientBuilder.create().build().execute(putRequest);
-
-
         JavascriptExecutor jse = (JavascriptExecutor)driver;
-        String executeScript = "browserstack_executor: {\"action\": \"setSessionStatus\", \"arguments\": {\"status\": \"passed\", \"reason\": \""+reason+"\"}}";
+        String executeScript = "browserstack_executor: {\"action\": \"setSessionStatus\", \"arguments\": {\"status\": \""+passed+"\", \"reason\": \""+reason+"\"}}";
         System.out.println(executeScript);
         jse.executeScript(executeScript);
     }

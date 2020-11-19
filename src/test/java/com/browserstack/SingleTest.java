@@ -17,6 +17,7 @@ public class SingleTest extends BrowserStackTestNGTest {
         element.sendKeys("BrowserStack");
         element.submit();
         Thread.sleep(5000);
+
         percy.snapshot("Home Page");
         nameTest("Search Product");
         try{

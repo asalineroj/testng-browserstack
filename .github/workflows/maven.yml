@@ -48,7 +48,7 @@ jobs:
           build-name: BUILD_INFO
           project-name: REPO_NAME
     - name: Percy Test
-      uses: percy/exec-action@v0.1.1
+      uses: percy/exec-action@v0.3.1
       env:
           BROWSERSTACK_BUILD_NAME: ${GITHUB_WORKFLOW}
           BROWSERSTACK_PROJECT: ${GITHUB_RUN_ID}

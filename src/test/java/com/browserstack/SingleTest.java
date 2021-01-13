@@ -38,8 +38,7 @@ public class SingleTest extends BrowserStackTestNGTest {
         WebElement month = driver.findElement(By.id("month"));
 
         WebElement year = driver.findElement(By.id("year"));
-
-        WebElement gender = driver.findElement(By.id("gender"));
+        
 
         nameTest("Sign Up");
 //        try{

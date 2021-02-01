@@ -17,7 +17,7 @@ public class SingleTest extends BrowserStackTestNGTest {
         Thread.sleep(2000);
         driver.get("https://id.seb.se/ibp/mbid");
         percy.snapshot("Log In Page");
-//        
+//
 //        WebElement email = driver.findElement(By.id("email"));
 //        email.sendKeys("andres@browserstack.com");
 //        WebElement confirm = driver.findElement(By.id("confirm"));

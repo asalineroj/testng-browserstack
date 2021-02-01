@@ -98,6 +98,7 @@ public class BrowserStackTestNGTest {
         driver = new RemoteWebDriver(
                 new URL("http://" + username + ":" + accessKey + "@" + config.get("server") + "/wd/hub"), capabilities);
         percy = new Percy(driver);
+        
         sessionID = ((RemoteWebDriver) driver).getSessionId().toString();
     }
 

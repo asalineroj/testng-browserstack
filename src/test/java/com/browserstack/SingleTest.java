@@ -12,21 +12,21 @@ public class SingleTest extends BrowserStackTestNGTest {
 
     @Test
     public void test() throws Exception {
-        driver.get("https://seb.se/");
+        driver.get("https://www.bt.com/");
         percy.snapshot("Home Page");
         Thread.sleep(2000);
-        driver.get("https://id.seb.se/ibp/mbid");
+       
         percy.snapshot("Log In Page");
 //
-//        WebElement email = driver.findElement(By.id("email"));
-//        email.sendKeys("andres@browserstack.com");
+       WebElement email = driver.findElement(By.name("q"));
+//       email.sendKeys("bt");
 //        WebElement confirm = driver.findElement(By.id("confirm"));
 //        confirm.sendKeys("andres@browserstack.com");
 //        WebElement password = driver.findElement(By.id("password"));
 //        password.sendKeys("password");
 //        WebElement displayname = driver.findElement(By.id("displayname"));
 //        displayname.sendKeys("displayname");
-//
+//       driver.get("https://www.google.ie/search?source=hp&ei=-gcdYJXmAbeAhbIPl8iesA0&q=mongodb&oq=mongodb&gs_lcp=CgZwc3ktYWIQAzIFCAAQsQMyCAgAELEDEIMBMggILhDHARCvATIICAAQsQMQgwEyAggAMgIIADICCAAyAggAMgIIADICCAA6CAgAEOoCEI8BOgsILhCxAxDHARCjAjoICC4QsQMQgwE6DgguELEDEMcBEK8BEJMCOggILhDHARCjAjoCCC46CwguEMcBEKMCEJMCOgsILhCxAxDHARCvAToFCC4QsQM6CwguELEDEIMBEJMCUIobWIEiYMMjaAFwAHgAgAF-iAHEA5IBAzYuMZgBAKABAaoBB2d3cy13aXqwAQo&sclient=psy-ab&ved=0ahUKEwiVy9vXr9LuAhU3QEEAHRekB9YQ4dUDCAc&uact=5");
 //        WebElement day = driver.findElement(By.id("day"));
 //
 //        WebElement month = driver.findElement(By.id("month"));
@@ -34,7 +34,7 @@ public class SingleTest extends BrowserStackTestNGTest {
 //        WebElement year = driver.findElement(By.id("year"));
 
 
-        nameTest("Sign Up");
+        nameTest("BT Home");
 //        try{
 //            assertEquals("BrowserStack - Google Search".toLowerCase(), driver.getTitle().toLowerCase());
 //        } catch (AssertionError e){

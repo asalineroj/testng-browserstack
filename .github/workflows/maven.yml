@@ -60,8 +60,8 @@ jobs:
         command: "mvn test -P local"
     - name: Build with Maven
       env:
-        BROWSERSTACK_BUILD_NAME: ${GITHUB_WORKFLOW}
-        BROWSERSTACK_PROJECT: $GITHUB_RUN_ID
+        BROWSERSTACK_BUILD_NAME: Features-$GITHUB_RUN_ID
+        BROWSERSTACK_PROJECT: Klarna_Web
         BROWSERSTACK_USERNAME: ${{secrets.BROWSERSTACK_USERNAME}}
         BROWSERSTACK_ACCESS_KEY: ${{secrets.BROWSERSTACK_ACCESS_KEY}}
       run: |

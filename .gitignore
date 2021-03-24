@@ -7,3 +7,4 @@ local.log
 .gradle
 build/
 .DS_Store
+node_modules/

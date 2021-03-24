@@ -12,16 +12,17 @@ public class SingleTest extends BrowserStackTestNGTest {
 
     @Test
     public void test() throws Exception {
-        driver.get("https://www.bt.com/");
+        driver.get("https://www.nordea.com/en/");
         percy.snapshot("Home Page");
         Thread.sleep(2000);
        
         percy.snapshot("Log In Page");
 //
-       WebElement email = driver.findElement(By.name("q"));
+        WebElement email = driver.findElement(By.name("q"));
 //       email.sendKeys("bt");
-//        WebElement confirm = driver.findElement(By.id("confirm"));
-//        confirm.sendKeys("andres@browserstack.com");
+        WebElement cookiesBanner = driver.findElement(By.className("wscrOk"));
+        cookiesBanner.click();
+        //confirm.sendKeys("andres@browserstack.com");
 //        WebElement password = driver.findElement(By.id("password"));
 //        password.sendKeys("password");
 //        WebElement displayname = driver.findElement(By.id("displayname"));
@@ -34,7 +35,7 @@ public class SingleTest extends BrowserStackTestNGTest {
 //        WebElement year = driver.findElement(By.id("year"));
 
 
-        nameTest("BT Home");
+        nameTest("Home");
 //        try{
 //            assertEquals("BrowserStack - Google Search".toLowerCase(), driver.getTitle().toLowerCase());
 //        } catch (AssertionError e){

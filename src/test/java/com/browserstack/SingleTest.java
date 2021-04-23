@@ -12,7 +12,7 @@ public class SingleTest extends BrowserStackTestNGTest {
 
     @Test
     public void test() throws Exception {
-        driver.get("https://www.nordea.com/en/");
+        driver.get("https://www.google.com/en/");
         percy.snapshot("Home Page");
         Thread.sleep(2000);
        

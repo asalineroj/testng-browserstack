@@ -39,9 +39,23 @@
             <class name="com.browserstack.SingleTest"/>
         </classes>
     </test>
-    <test name="SingleTestSamsung8">
+    <test name="SingleTestIPad">
         <parameter name="config" value="parallel.conf.json"/>
-        <parameter name="environment" value="samsung8"/>
+        <parameter name="environment" value="iPad_Air"/>
+        <classes>
+            <class name="com.browserstack.SingleTest"/>
+        </classes>
+    </test>
+    <test name="SingleTestAndroid9">
+        <parameter name="config" value="parallel.conf.json"/>
+        <parameter name="environment" value="android9"/>
+        <classes>
+            <class name="com.browserstack.SingleTest"/>
+        </classes>
+    </test>
+    <test name="SingleTestAndroid6">
+        <parameter name="config" value="parallel.conf.json"/>
+        <parameter name="environment" value="android6"/>
         <classes>
             <class name="com.browserstack.SingleTest"/>
         </classes>

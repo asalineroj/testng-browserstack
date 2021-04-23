@@ -12,7 +12,8 @@
 
   "environments": {
     "chrome": {
-      "browser": "chrome"
+      "browser": "chrome",
+      "browserVersion": "latest"
     },
     "firefox": {
       "browser": "firefox"

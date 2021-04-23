@@ -13,7 +13,7 @@ public class SuiteTest08 extends BrowserStackTestNGTest {
     @Test
     public void test_08() throws Exception {
         driver.get("https://www.google.com/ncr");
-        nameTest("Send Proof of Residence");
+        nameTest("Test");
         Thread.sleep(2500);
         WebElement element = driver.findElement(By.name("q"));
         element.sendKeys("BrowserStack Test 08");

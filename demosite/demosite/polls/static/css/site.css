@@ -12,6 +12,7 @@ form {
 
 #login {
     grid-column: 2;
+    font-size: larger;
 }
 
 body > h1:nth-child(2) {

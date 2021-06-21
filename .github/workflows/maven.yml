@@ -67,4 +67,5 @@ jobs:
       run: |
         echo ${{ env.BROWSERSTACK_BUILD_NAME }} 
         echo ${{ env.BROWSERSTACK_PROJECT }}
+        echo ${{ env.BROWSERSTACK_USERNAME}}
         BROWSERSTACK_BUILD_NAME=${{ env.BROWSERSTACK_BUILD_NAME }} BROWSERSTACK_PROJECT=${{ env.BROWSERSTACK_PROJECT }} PERCY_ENABLE=0 mvn test -P parallel

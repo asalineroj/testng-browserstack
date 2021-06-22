@@ -41,11 +41,9 @@ jobs:
     - name: Install
       run: yarn
     - name: 'BrowserStack Env Setup & Build'
-      uses: 'browserstack/github-actions/setup-env@master'
+      uses: 'browserstack/github-actions/setup-env@master' PERCY_ENABLE=0 mvn test -Pparallel
       with:
           username:  ${{ secrets.BROWSERSTACK_USERNAME }}
           access-key: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
           build-name: BUILD_INFO
           project-name: REPO_NAME
-      run: |
-          PERCY_ENABLE=0 mvn test -P parallel

@@ -40,21 +40,12 @@ jobs:
       uses: actions/checkout@master
     - name: Install
       run: yarn
-    - name: 'BrowserStack Env Setup'
+    - name: 'BrowserStack Env Setup & Build'
       uses: 'browserstack/github-actions/setup-env@master'
       with:
           username:  ${{ secrets.BROWSERSTACK_USERNAME }}
           access-key: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
           build-name: BUILD_INFO
           project-name: REPO_NAME
-    - name: Build with Maven
-      env:
-        BROWSERSTACK_BUILD_NAME: Features-$GITHUB_RUN_ID
-        BROWSERSTACK_PROJECT: WEBINAR_GITHUB_ACTIONS
-        BROWSERSTACK_USERNAME: ${{secrets.BROWSERSTACK_USERNAME}}
-        BROWSERSTACK_ACCESS_KEY: ${{secrets.BROWSERSTACK_ACCESS_KEY}}
       run: |
-        echo "$BROWSERSTACK_BUILD_NAME"
-        echo "$BROWSERSTACK_PROJECT"
-        echo "$BROWSERSTACK_USERNAME"
-        BROWSERSTACK_USERNAME="$BROWSERSTACK_USERNAME" BROWSERSTACK_ACCESS_KEY="$BROWSERSTACK_ACCESS_KEY" BROWSERSTACK_BUILD_NAME="$BROWSERSTACK_BUILD_NAME" BROWSERSTACK_PROJECT="$BROWSERSTACK_PROJECT" PERCY_ENABLE=0 mvn test -P parallel
+          PERCY_ENABLE=0 mvn test -P parallel
